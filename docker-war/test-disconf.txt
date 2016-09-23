@@ -1,0 +1,44 @@
+运行disconf-spring-boot-demo 程序，会自动读取disconf server  disconf_app下的配置文件 
+autoconfig.properties 和 simple.properties里面的值
+
+可以在disconf-spring-boot-demo  的resources/disconf.properties 里面配置以下项目
+
+disconf server地址
+disconf.conf_server_host=172.30.80.127:9000
+版本
+disconf.version=1_0_0_0
+app 
+disconf.app=disconf_demo
+
+
+
+其实在zookeeper 中的 /disconf 路径下面保存了这些配置文件及值
+
+例如查询autoconfig.properties,第一行就是配置及其值
+
+get   /disconf/disconf_demo_1_0_0_0_rd/file/autoconfig.properties
+"auto\u003dtest"
+cZxid = 0xa
+ctime = Thu Sep 22 17:03:00 CST 2016
+mZxid = 0xc
+mtime = Thu Sep 22 17:19:28 CST 2016
+pZxid = 0xb
+cversion = 1
+dataVersion = 1
+aclVersion = 0
+ephemeralOwner = 0x0
+dataLength = 16
+numChildren = 1
+
+路径 disconf_demo 是APP名称
+1_0_0_0 是版本
+rd 是环境
+file 文件路径 固定写法
+autoconfig.properties 是web上配置或上传的配置文件
+
+
+可以新建一个simple.properties 内容为下面，上传到对应的版本进行测试
+host=1.1.1.1
+port=9999
+
+

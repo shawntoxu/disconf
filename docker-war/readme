@@ -1,0 +1,7 @@
+disconf web docker化
+1 修改web-app/WEB-INF/classes 下 jdbc 和 zookeeper连接地址
+  jdbc-mysql.properties
+  zoo.properties
+2 sh build.sh 构建docker image (基础镜像已存在,基础镜像包含了jdk 和 nginx)
+
+3 run.sh 运行
